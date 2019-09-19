@@ -1,0 +1,17 @@
+<div id="search">
+  <div id="search-filters">
+    <div class="search-filter option" [ngClass]="{'selected': filter === holder.type}" *ngFor="let filter of filterType" (click)="filterItems(filter)"> {{filter}}</div>
+    <div class="search-filter sort" [ngClass]="{'selected': holder.order === 'a'}" (click)="order('a')">A - Z</div>
+    <div class="search-filter sort" [ngClass]="{'selected': holder.order === 'b'}" (click)="order('b')">Z - A</div>
+    <div class="search-filter clear" (click)="clear()">Clear Filters</div>
+  </div>
+  <div class="search-input-container">
+    <input type="text" [(ngModel)]="inputValue"
+           (input)="searchForResults(inputValue)">
+  </div>
+  <div class="result-container" *ngIf="searchResults">
+    <div *ngFor="let result of searchResults">
+      {{result.name}}
+    </div>
+  </div>
+</div>
